@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { View, Image, Dimensions, Text } from 'react-native';
+import { View, Image, Text, Button } from 'react-native';
 import Swiper from 'react-native-swiper';
-// 取得屏幕的宽高Dimensions
-const { width } = Dimensions.get('window');
+import px2dp from '../../utils/px2dp';
 const styles = {
   container: {
     flex: 1
@@ -12,14 +11,12 @@ const styles = {
     height: 19
   },
   wrapper: {
-    width,
-    height: 150,
+    height: px2dp(250),
     backgroundColor: 'red'
   },
   image: {
-    width
+    width: px2dp(750)
   },
-
   paginationStyle: {
     bottom: 6
   },
@@ -43,10 +40,11 @@ export default class TaskPage extends Component {
     this.state = {
       swiperShow: true
     };
+    this.goNewsList = this.goNewsList.bind(this);
   }
   static navigationOptions = {
+    title: '任务',
     tabBarLabel: '任务',
-    header: null, // 隐藏顶部导航栏
     tabBarIcon: ({ focused }) => {
       if (focused) {
         return (
@@ -69,8 +67,19 @@ export default class TaskPage extends Component {
       <View style={styles.container}>
         <View style={styles.wrapper}>{this.renderBanner()}</View>
         <View style={{ width: 375, height: 0.5, backgroundColor: '#dcdcdc' }} />
+        <View>
+          <Button
+            onPress={this.goNewsList}
+            title="Learn More"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
+        </View>
       </View>
     );
+  }
+  goNewsList() {
+    this.props.navigation.navigate('NewsListScreen');
   }
   // 轮播图
   renderBanner() {

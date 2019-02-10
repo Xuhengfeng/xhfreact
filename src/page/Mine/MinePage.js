@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
 export default class MinePage extends Component {
   static navigationOptions = {
     tabBarLabel: '个人',
-    header: null, // 隐藏顶部导航栏
     tabBarIcon: ({ focused }) => {
       if (focused) {
         return (

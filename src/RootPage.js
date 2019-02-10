@@ -4,7 +4,7 @@ import HomePage from './page/Home/HomePage';
 import TaskPage from './page/Task/TaskPage';
 import MinePage from './page/Mine/MinePage';
 import DealPage from './page/Deal/DealPage';
-
+import px2dp from './utils/px2dp';
 export const TabNav = createBottomTabNavigator(
   {
     Home: {
@@ -39,9 +39,9 @@ export const TabNav = createBottomTabNavigator(
       pressOpacity: 0.2,
       //tab bar的样式
       style: {
+        height: px2dp(80),
         backgroundColor: '#fff',
         paddingBottom: 1,
-        borderTopWidth: 0.2,
         paddingTop: 1,
         borderTopColor: '#ccc'
       },
